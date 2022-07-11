@@ -115,5 +115,5 @@ def submit():
             win = "Draw"
         return render_template("index.html",game=game,win=win,AI=AI)
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
 
