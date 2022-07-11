@@ -5,6 +5,10 @@ import combine
 from flask import Flask, request, render_template
 
 global agent1
+global player_turn
+global AI_turn
+global gameBoard
+global AI
 
 state = torch.load('models/modelX',map_location=torch.device('cpu'))
 netX = combine.ttt_netX()
@@ -15,29 +19,27 @@ netO = combine.ttt_netO()
 netO.load_state_dict(state)
 agent1 = combine.agent(netX,netO)
 
-global player_turn
-global AI_turn
-global gameBoard
-global AI
 AI = 'AI: X'
 AI_turn = -1
 player_turn = 1
 app = Flask(__name__)
 gameBoard = combine.ttt()
-game = np.empty([3,3], dtype = str)
 
 @app.route("/")
 def hello():
+    global player_turn
     global AI_turn
-    global agent1
+    global gameBoard
     global AI
+    global agent1
     game = gameBoard.getBoard()
+    win = ""
     if AI_turn == gameBoard.turn:
         agent1.set_player(AI_turn)
         move,_ = agent1.make_move(gameBoard)
         gameBoard.play(move[0],move[1])
         game = gameBoard.getBoard()
-    return render_template("index.html",game=game,AI=AI)
+    return render_template("index.html",game=game,win=win,AI=AI)
 
 @app.route("/", methods = ['POST'])
 def submit():
