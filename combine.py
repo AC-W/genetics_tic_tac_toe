@@ -9,12 +9,8 @@ Original file is located at
 
 import numpy as np
 from torch.nn import functional as F
-from torch import nn, optim
-import sys
+from torch import nn
 import torch
-from IPython.display import clear_output
-from torchvision import transforms as tr
-import random
 import copy
 
 class agent():

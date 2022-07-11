@@ -1,19 +1,8 @@
-from math import comb
-from wsgiref.util import request_uri
 import numpy as np
-from torch.nn import functional as F
-from torch import nn, optim
-import sys
 import torch
-from IPython.display import clear_output
-from torchvision import transforms as tr
-import random
-import copy
-
 import combine
 
-from flask import Flask, flash, request, redirect, url_for, render_template
-from io import BytesIO
+from flask import Flask, request, render_template
 
 global agent1
 
@@ -111,6 +100,11 @@ def submit():
                 AI = 'AI: X'
             else:
                 AI = 'AI: O'
+            if AI_turn == gameBoard.turn:
+                agent1.set_player(AI_turn)
+                move,_ = agent1.make_move(gameBoard)
+                gameBoard.play(move[0],move[1])
+                game = gameBoard.getBoard()
         if gameBoard.win == -1:
             win = "X wins"
         if gameBoard.win == 1:
