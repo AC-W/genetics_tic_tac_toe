@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="..\static\css\style.css">
+        <title>Tic Tac Toe</title>
+    </head>
+    <body>
+        {% if not win %}
+        <h1>Tic Tac Toe AI<h1>
+        {% endif %}
+
+        {% if win %}
+            <h1>{{win}}<h1>
+        {% endif %}
+            <form>
+                <div class="gameBoard">
+                    <button class="buttons" value="" name="00" type="submit" formmethod="POST">{{game[0][0]}}</button>
+                    <button class="buttons" value="" name="01" type="submit" formmethod="POST">{{game[0][1]}}</button>
+                    <button class="buttons" value="" name="02" type="submit" formmethod="POST">{{game[0][2]}}</button>
+
+                    <button class="buttons" value="" name="10" type="submit" formmethod="POST">{{game[1][0]}}</button>
+                    <button class="buttons" value="" name="11" type="submit" formmethod="POST">{{game[1][1]}}</button>
+                    <button class="buttons" value="" name="12" type="submit" formmethod="POST">{{game[1][2]}}</button>
+
+                    <button class="buttons" value="" name="20" type="submit" formmethod="POST">{{game[2][0]}}</button>
+                    <button class="buttons" value="" name="21" type="submit" formmethod="POST">{{game[2][1]}}</button>
+                    <button class="buttons" value="" name="22" type="submit" formmethod="POST">{{game[2][2]}}</button>           
+                </div>
+                <div class = "menu">
+                    <button class="menu-button" value="" name="reset" type="submit" formmethod="POST">Reset</button>
+                    <button class="menu-button" value="" name="AI" type="submit" formmethod="POST">{{AI}}</button>
+                </div>
+            </form>
+    </body>
+</html>>

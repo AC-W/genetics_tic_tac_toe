@@ -36,10 +36,10 @@ class agent():
   def make_move(self,board):
     if self.player == -1:
       matrix = matrixX
-      self.brain = netX
+      self.brain = self.Xbrain
     else:
       matrix = matrixO
-      self.brain = netO
+      self.brain = self.Obrain
     valid_moves = board.valid_moves()
     best_move = None
     best_score = None
@@ -106,6 +106,25 @@ class ttt():
     self.board = np.zeros(size)
     self.x = size[0]
     self.y = size[1]
+
+  def reset(self,size=(3,3)):
+    self.turn = -1
+    self.win = None
+    self.board = np.zeros(size)
+    self.x = size[0]
+    self.y = size[1]
+
+  def getBoard(self):
+    Rboard = np.empty([3,3], dtype = str)
+    for x in range(len(self.board)):
+      for y in range(len(self.board[x])):
+        sym = ""
+        if self.board[x][y] == -1:
+          sym = "X"
+        elif self.board[x][y] == 1:
+          sym = "O"
+        Rboard[x][y] = sym
+    return Rboard
     
   def check(self):
     empty = False
@@ -308,14 +327,3 @@ def play_game(player1=None,player2=None,human=False):
     board.game_end
     print(board)
   return
-
-state = torch.load('/content/drive/MyDrive/Models/tic_tac_toe_net_1.4.X',map_location=torch.device('cpu'))
-netX = ttt_netX()
-netX.load_state_dict(state)
-
-state = torch.load('/content/drive/MyDrive/Models/tic_tac_toe_net_1.4.1',map_location=torch.device('cpu'))
-netO = ttt_netO()
-netO.load_state_dict(state)
-agent1 = agent(netX,netO)
-
-play_game(player1=agent1,human=True)
