@@ -24,6 +24,16 @@ body{
     border-radius: 10px;
     border-color: black;
     font-size: xx-large;
+
+    -webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.buttons:hover{
+    background-color: darkgrey;
 }
 
 .menu{
@@ -41,4 +51,14 @@ body{
     border: solid;
     border-radius: 10px;
     border-color: black;
+
+    -webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.menu-button:hover{
+    background-color: darkgrey;
 }

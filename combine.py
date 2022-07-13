@@ -14,9 +14,8 @@ import torch
 import copy
 
 class agent():
-  def __init__(self,netX,netO):
+  def __init__(self,netX):
     self.fitness = 0
-    self.Obrain = netO
     self.Xbrain = netX
     self.brain = None
     self.games_played = 0
@@ -35,7 +34,20 @@ class agent():
       self.brain = self.Xbrain
     else:
       matrix = matrixO
-      self.brain = self.Obrain
+      x_loc = 0
+      y_loc = 0
+      count = 0
+      for x in range(3):
+        for y in range(3):
+            if board.board[x][y] != 0:
+                count += 1
+                x_loc = x
+                y_loc = y
+      if count == 1:
+        model_path = f'models/modelO_1.{x_loc}_{y_loc}'
+        state = torch.load(model_path,map_location=torch.device('cpu'))
+        self.brain = ttt_netO()
+        self.brain.load_state_dict(state)
     valid_moves = board.valid_moves()
     best_move = None
     best_score = None

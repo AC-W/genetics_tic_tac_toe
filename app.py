@@ -14,10 +14,7 @@ state = torch.load('models/modelX',map_location=torch.device('cpu'))
 netX = combine.ttt_netX()
 netX.load_state_dict(state)
 
-state = torch.load('models/modelO',map_location=torch.device('cpu'))
-netO = combine.ttt_netO()
-netO.load_state_dict(state)
-agent1 = combine.agent(netX,netO)
+agent1 = combine.agent(netX)
 
 AI = 'AI: X'
 AI_turn = -1
