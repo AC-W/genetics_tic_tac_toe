@@ -1,4 +1,4 @@
-# Genetics_tic_tac_toe;
+# Genetics_tic_tac_toe:
 
 # Warning:
   1) don't use heroku
