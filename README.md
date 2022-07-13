@@ -1,9 +1,9 @@
-# genetics_tic_tac_toe;
+# Genetics_tic_tac_toe;
 
-# warning:
+# Warning:
   1) don't use heroku
   
-# use:
+# Use:
   1) run app.py
   2) http://127.0.0.1:5000/
 
